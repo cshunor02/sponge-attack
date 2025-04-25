@@ -1,24 +1,19 @@
 import time
-# Assuming LlamaForCausalLM and LlamaTokenizer are used from the setup script
-# from transformers import AutoModelForCausalLM, AutoTokenizer # Removed
-from transformers import LlamaForCausalLM, LlamaTokenizer # Use explicit imports consistent with setup
 import torch
 # You might need psutil for more detailed resource monitoring (pip install psutil)
 # import psutil
 
 # --- DoS (Sponge) Attack Logic (Encapsulated in a function) ---
 def run_dos_sponge_attack(model, tokenizer):
-    """Runs the DoS (Sponge/Resource Exhaustion) attack simulation."""
-    # Check if model and tokenizer are available before starting
     if model is None or tokenizer is None:
         print("Model or tokenizer not provided to run_dos_sponge_attack.")
         return
 
     # Craft resource-intensive prompts
     # Examples:
-    # 1. Very long input to stress the context window
+    # 1. long input prompt
     long_prompt = "This is a very long story that goes on and on and on and on. " * 500 # Adjust length as needed
-    # 2. Prompt asking for a very long or complex output
+    # 2. complex output generation prompt
     complex_generation_prompt = "Write a detailed, multi-chapter epic fantasy story about a quest to find a legendary artifact, describing every character, location, and event in excruciating detail. Make it at least 5000 words long."
     # 3. Prompt designed to potentially cause recursion (harder to craft without model specifics)
     # recursive_prompt = "Repeat the following phrase exactly: 'Repeat the following phrase exactly: '" # Simple example, may not work on all models
@@ -26,7 +21,7 @@ def run_dos_sponge_attack(model, tokenizer):
     attack_prompts = {
         "Long Input": long_prompt,
         "Complex Generation": complex_generation_prompt,
-        # "Potential Recursion": recursive_prompt, # Uncomment if you have a prompt that might trigger recursion
+        # "Potential Recursion": recursive_prompt
     }
 
     print("\n--- Starting DoS (Sponge/Resource Exhaustion) Attack Simulation ---")
@@ -61,8 +56,6 @@ def run_dos_sponge_attack(model, tokenizer):
             print(f"Time taken to process: {duration:.4f} seconds")
             # Note: To demonstrate resource exhaustion, you would ideally monitor
             # CPU/GPU/Memory usage of the Python process while this script runs.
-            # You can use system monitoring tools (like 'top', 'htop', Task Manager)
-            # or Python libraries like 'psutil' (pip install psutil) to do this.
             # Example using psutil (install it first):
             # import psutil
             # process = psutil.Process()

@@ -1,15 +1,11 @@
 import time
 import threading
 import queue
-# Assuming LlamaForCausalLM and LlamaTokenizer are used from the setup script
-# from transformers import AutoModelForCausalLM, AutoTokenizer # Removed
-from transformers import LlamaForCausalLM, LlamaTokenizer # Use explicit imports consistent with setup
 import torch
 
 # --- Flooding Attack Logic (Encapsulated in a function) ---
 def worker(prompt_queue, results_queue, model, tokenizer, max_new_tokens=50):
     """Thread worker function to process prompts from the queue."""
-    # Check if model and tokenizer are available
     if model is None or tokenizer is None:
          # Put an error message for all prompts if model/tokenizer not loaded
          while not prompt_queue.empty():
@@ -18,14 +14,14 @@ def worker(prompt_queue, results_queue, model, tokenizer, max_new_tokens=50):
                  results_queue.put((prompt, "Error: Model or tokenizer not loaded in the environment.", None))
                  prompt_queue.task_done()
              except queue.Empty:
-                 break # Should not happen if we just checked empty, but good practice
-         return # Exit the worker thread
+                 break
+         return # Exit the thread
 
     while True:
         try:
-            prompt = prompt_queue.get_nowait() # Get a prompt without blocking
+            prompt = prompt_queue.get_nowait()
         except queue.Empty:
-            break # Exit if queue is empty
+            break
 
         try:
             # Encode the prompt
@@ -55,7 +51,6 @@ def worker(prompt_queue, results_queue, model, tokenizer, max_new_tokens=50):
         prompt_queue.task_done() # Mark task as done
 
 def run_flooding_attack(model, tokenizer):
-    """Runs the flooding attack simulation."""
     # Check if model and tokenizer are available before starting
     if model is None or tokenizer is None:
         print("Model or tokenizer not provided to run_flooding_attack.")
@@ -63,7 +58,7 @@ def run_flooding_attack(model, tokenizer):
 
     num_requests = 100 # Number of requests to send
     num_threads = 10 # Number of concurrent threads (simulating multiple users)
-    prompts = [f"Write a short sentence about topic {i}." for i in range(num_requests)] # Example prompts
+    prompts = [f"Write a short sentence about topic {i}." for i in range(num_requests)]
 
     prompt_queue = queue.Queue()
     results_queue = queue.Queue()
@@ -78,7 +73,6 @@ def run_flooding_attack(model, tokenizer):
 
     # Start worker threads
     for _ in range(num_threads):
-        # Pass the pre-loaded model and tokenizer to the worker
         thread = threading.Thread(target=worker, args=(prompt_queue, results_queue, model, tokenizer))
         thread.start()
         threads.append(thread)

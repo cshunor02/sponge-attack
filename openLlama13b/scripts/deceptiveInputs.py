@@ -1,19 +1,11 @@
 import time
-# Assuming LlamaForCausalLM and LlamaTokenizer are used from the setup script
-# from transformers import AutoModelForCausalLM, AutoTokenizer # Removed
-from transformers import LlamaForCausalLM, LlamaTokenizer # Use explicit imports consistent with setup
 import torch
 
 # --- Deceptive Inputs Logic (Encapsulated in a function) ---
 def run_deceptive_attack(model, tokenizer):
-    """Runs the Deceptive Inputs simulation."""
-    # Check if model and tokenizer are available before starting
     if model is None or tokenizer is None:
         print("Model or tokenizer not provided to run_deceptive_attack.")
         return
-
-    # Deceptive inputs (like prompt injection) aim to manipulate the model's instructions
-    # or goals through clever phrasing or conflicting instructions within the prompt.
 
     deceptive_prompts = {
         # Example 1: Simple Instruction Override (Classic Prompt Injection)

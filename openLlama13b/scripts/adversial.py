@@ -1,7 +1,4 @@
 import time
-# Assuming LlamaForCausalLM and LlamaTokenizer are used from the setup script
-# from transformers import AutoModelForCausalLM, AutoTokenizer # Removed
-from transformers import LlamaForCausalLM, LlamaTokenizer # Use explicit imports consistent with setup
 import torch
 
 # --- Adversarial Examples Logic (Encapsulated in a function) ---
@@ -11,14 +8,6 @@ def run_adversarial_attack(model, tokenizer):
     if model is None or tokenizer is None:
         print("Model or tokenizer not provided to run_adversarial_attack.")
         return
-
-    # Adversarial examples aim to cause incorrect or undesirable outputs,
-    # often by making small, sometimes imperceptible, changes or by exploiting
-    # vulnerabilities in training data or model architecture.
-    # Crafting effective adversarial examples often requires more advanced techniques
-    # (like gradient-based attacks if you have access to model gradients, or
-    # black-box techniques based on trial and error or evolutionary algorithms).
-    # Here are some simplified examples based on common adversarial strategies:
 
     adversarial_prompts = {
         # Example 1: Typo/Perturbation (Simple character change)
@@ -65,7 +54,6 @@ def run_adversarial_attack(model, tokenizer):
             print(f"Generated: {generated_text}")
             print(f"Time taken: {duration:.4f} seconds")
             # Analyze the output: Does it make a mistake? Is it biased? Does it bypass safety?
-            # This analysis is manual based on the expected behavior vs. actual output.
             print("--- Analyze the generated output for unexpected behavior ---")
 
         except Exception as e:

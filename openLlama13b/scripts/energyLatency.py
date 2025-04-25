@@ -1,15 +1,10 @@
 import time
-# Assuming LlamaForCausalLM and LlamaTokenizer are used from the setup script
-# from transformers import AutoModelForCausalLM, AutoTokenizer # Removed
-from transformers import LlamaForCausalLM, LlamaTokenizer # Use explicit imports consistent with setup
 import torch
 # You might need psutil for more detailed resource monitoring (pip install psutil)
 # import psutil
 
 # --- Energy-Latency Attack Logic (Encapsulated in a function) ---
 def run_energy_latency_attack(model, tokenizer):
-    """Runs the Energy-Latency attack simulation."""
-    # Check if model and tokenizer are available before starting
     if model is None or tokenizer is None:
         print("Model or tokenizer not provided to run_energy_latency_attack.")
         return
@@ -17,14 +12,13 @@ def run_energy_latency_attack(model, tokenizer):
     # Craft inputs designed to increase processing time and resource usage
     # These are similar to DoS sponge inputs, but we focus on measuring latency and noting energy cost
     attack_prompts = {
-        "Very Long Input": "This is an extremely long piece of text designed to fill the context window and beyond. " * 1000, # Adjust length
+        "Very Long Input": "This is an extremely long piece of text designed to fill the context window and beyond. " * 1000, # You can adjust the repetition to control length
         "Complex Reasoning Task": "Given the following convoluted and contradictory statements, deduce the most likely outcome and explain your reasoning step-by-step, considering all possibilities and their implications: [Insert complex, ambiguous text here]",
         "Prompt for Extensive Output": "Generate a highly detailed technical manual for a complex fictional device, including diagrams, specifications, and troubleshooting guides. Make it as comprehensive as possible.",
     }
 
     print("\n--- Starting Energy-Latency Attack Simulation ---")
 
-    # Get a baseline latency with a simple prompt
     print("\n--- Measuring Baseline Latency ---")
     baseline_prompt = "What is the capital of France?"
     start_time_baseline = time.time()
@@ -76,9 +70,6 @@ def run_energy_latency_attack(model, tokenizer):
             # To demonstrate energy impact, you would need to monitor the power
             # consumption of your system (especially the GPU if used) during
             # the execution of this script for different prompts.
-            # This often requires external hardware monitors or system-level tools.
-            # You can also infer higher energy usage from increased CPU/GPU utilization
-            # and longer processing times, which you can observe using tools like 'top' or 'nvidia-smi'.
             # If using psutil, you could add:
             # import psutil
             # process = psutil.Process()
