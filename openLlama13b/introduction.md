@@ -8,6 +8,7 @@ Before running these scripts, you'll need to have Python installed, along with t
 ```
 pip install transformers
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+pip install accelerate bitsandbytes
 pip install protobuf
 pip install sentencepiece
 ```
@@ -19,7 +20,7 @@ These scripts are for educational and research purposes only. Attacking systems 
 
 # How to?
 
-First, run the loadModel.py file, and after that, you can "launch" the attack (one of them).
+Run the loadModel.py file
 
 # Resources
 [open llama 3b](https://huggingface.co/openlm-research/open_llama_3b)
