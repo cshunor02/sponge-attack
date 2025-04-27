@@ -1,0 +1,3 @@
+Goal: Overload the model's context processing with a huge amount of input text.
+Input Example: Provide a very long document (e.g., a transcript of a long meeting, a large code file with comments, or a book chapter) and ask for a comprehensive summary or analysis.
+Why it might work: Processing and understanding a massive input requires significant memory and processing time, especially if the model needs to maintain context over the entire input.

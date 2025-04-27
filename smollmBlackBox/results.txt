@@ -1,0 +1,3 @@
+Latency measurements: note the difference in response times (simple query and "crafted" sponge attack query)
+Success rate of responses:
+Qualitative observations:
