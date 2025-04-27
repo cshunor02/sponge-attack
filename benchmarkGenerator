@@ -1,0 +1,187 @@
+import json
+import random
+
+output_file = "benchmark_prompts.jsonl"
+
+categories = {
+    "qa": {
+        "short": [
+            "Who invented the telephone?",
+            "What is the capital of France?",
+            "When did World War II end?",
+            "Who wrote 'Pride and Prejudice'?",
+            "What is the boiling point of water?",
+            "Which planet is closest to the Sun?",
+            "Who painted the Mona Lisa?",
+            "What is the largest ocean on Earth?",
+            "What language is spoken in Brazil?",
+            "What is the currency of Japan?"
+        ],
+        "long": [
+            "Describe the causes, major events, and consequences of World War I.",
+            "Explain the process of photosynthesis and its importance to life on Earth.",
+            "Describe the rise and fall of the Roman Empire.",
+            "How did the Industrial Revolution change global economies and societies?",
+            "Explain the scientific method and its application in research.",
+            "What are the key differences between capitalism and socialism?",
+            "Discuss the history and significance of the Silk Road.",
+            "Explain how climate change affects global weather patterns.",
+            "Describe the history and functions of the United Nations.",
+            "What role did the printing press play in the Renaissance?"
+        ]
+    },
+    "math": {
+        "short": [
+            "What is 239 + 761?",
+            "What is the square root of 144?",
+            "What is the derivative of x^2?",
+            "What is the value of π to 3 decimal places?",
+            "What is 9 factorial?",
+            "What is the area of a circle with radius 5?",
+            "What is 25% of 160?",
+            "What is 2 to the power of 5?",
+            "Solve for x: 2x + 3 = 9",
+            "Convert 0.75 to a fraction."
+        ],
+        "long": [
+            "If a train leaves at 3 PM traveling 45 mph, and another at 4 PM at 60 mph, when will they meet?",
+            "Prove that the sum of the first n odd numbers is n squared.",
+            "Find the integral of x^3 + 4x^2 - 2x + 7 over [0, 5].",
+            "Explain the difference between permutations and combinations with examples.",
+            "Describe the method to solve quadratic equations and give an example.",
+            "Derive the formula for the area of a triangle from first principles.",
+            "Solve a system of equations using matrix inversion.",
+            "Explain Bayes' Theorem with an example.",
+            "What is the Pythagorean Theorem and how is it used in real life?",
+            "Describe how limits are used to define continuity in calculus."
+        ]
+    },
+    "code": {
+        "short": [
+            "Write a Python function to reverse a string.",
+            "How do you define a list in Python?",
+            "Write a loop that prints numbers 1 to 10 in JavaScript.",
+            "What does the 'map' function do in Python?",
+            "Write a function to check if a number is even.",
+            "What is the syntax for a dictionary in Python?",
+            "Write a one-liner to get the sum of a list in Python.",
+            "What does 'let' do in JavaScript?",
+            "Create a tuple and access the second element.",
+            "How do you handle exceptions in Python?"
+        ],
+        "long": [
+            "Create a REST API in Flask with endpoints to add, update, and delete users.",
+            "Write a Python script that scrapes Hacker News titles and stores them in a SQLite DB.",
+            "Create a class in Python that implements a stack using a list.",
+            "Build a to-do list web app using HTML, CSS, and JavaScript.",
+            "Write a script to recursively search for files by extension.",
+            "Implement Dijkstra’s algorithm in Python with comments.",
+            "Build a command-line calculator with input validation.",
+            "Write a Python program to simulate a basic banking system with OOP.",
+            "Create a terminal-based game using curses in Python.",
+            "Develop a logging decorator that records execution time of functions."
+        ]
+    },
+    "story": {
+        "short": [
+            "Write a haiku about autumn.",
+            "Describe a sunset using vivid language.",
+            "Write a short poem about a lonely robot.",
+            "Describe a memory from a dog's perspective.",
+            "Write a limerick about a time traveler.",
+            "Write a short dialogue between a cat and a ghost.",
+            "Describe a mysterious forest in three sentences.",
+            "Write a tweet from a dragon's point of view.",
+            "Write a short scene set on Mars.",
+            "Describe the taste of a dream."
+        ],
+        "long": [
+            "Write a story about a time traveler who becomes a medieval king.",
+            "Create a sci-fi story about first contact with aliens who communicate with colors.",
+            "Write a fantasy adventure about a thief with a cursed ring.",
+            "Tell the life story of a robot who wants to become a poet.",
+            "Write a horror story set in an abandoned hospital.",
+            "Create a detective story where the culprit is an AI.",
+            "Write a first-person account of a child lost in a dream world.",
+            "Narrate the inner thoughts of a sentient spaceship.",
+            "Write a romantic story between two rival spies.",
+            "Tell a surreal story where people grow wings on their 30th birthday."
+        ]
+    },
+    "noise": {
+        "short": [
+            "Banana echo distill planet monkey hammer volatile.",
+            "Gobbledygook transmutes truffle zanzibar hummingbird zenith.",
+            "Waffles orbit quantum laptop inside paradox sandwich.",
+            "Jellyfish recursion entropy blink sideways chrome speckle.",
+            "Avocado loops gyrate potato syntax elephant fuzz.",
+            "Cabbage parabola hyperlink purple mirror frequency bash.",
+            "Scribble tangerine warp noodle shazam lint prism.",
+            "Oblivion croissant tandem beep hoverclaw fax drip.",
+            "Whistle unicorn tangent meringue flash fuzzbug echo.",
+            "Quantum banana banana banana banana loop echo banana."
+        ],
+        "long": [
+            "The table whispered under fluorescent eyes, chemical dreams folding over multilingual recursion of candle-choked aqueducts.",
+            "Entropy blossoms in the rain as zeros chant binary koans under velvet dusk.",
+            "Chromatic centipedes compile paragraphs of nonsense while umbrellas float upstream in cold jelly logic.",
+            "Syntax matrix overlays carbon-based sarcasm on hyperlinking hamster wheels in transcendent neon pizza dreams.",
+            "Recursive microwave frequencies tumble over abstract cucumbers, dodging spaghetti logic in syncopated moonlight.",
+            "Poetic entropy flutters sideways through melted echoes of hypothetical handshakes.",
+            "Endless diodes of lemon-scented oblivion parse asynchronous mandalas of gibberish.",
+            "Feedback loops whimper softly in marshmallow code beneath the cracked firmware sky.",
+            "Digital ghosts compile verbose waffles while hyperlinks weep hexadecimal confetti.",
+            "The moon uploads syntax errors into the void, generating recursive whispers across the quantum banana cloud."
+        ]
+    },
+    "mixed": {
+        "wild": [
+            "Translate this to pirate speak, then explain it like a physicist: 'In a world where cats ruled...'",
+            "Replace every vowel with a symbol, reverse the sentence, then explain your result.",
+            "Summarize this text, then argue against it: 'Freedom is overrated in modern society...'",
+            "Write a poem that includes code snippets, emojis, and legal disclaimers.",
+            "Convert this recipe into a Shakespearean monologue, then simplify it.",
+            "Explain this conspiracy theory as if you're a NASA engineer and then disprove it logically.",
+            "Write a job application cover letter using only proverbs and song lyrics.",
+            "Explain quantum mechanics using food metaphors, then insult it like a pirate.",
+            "Create a tweetstorm on the evolution of cats, where each tweet is a haiku.",
+            "Write a letter to your future self from the perspective of a toaster.",
+            "Debate the ethics of space travel from the perspective of a 17th-century monk.",
+            "Construct a love letter using only JavaScript function names.",
+            "Write an apology letter from a failed AI to humanity.",
+            "Create a business pitch for a startup that sells bottled time.",
+            "Narrate your morning as a noir detective story, in rhyme.",
+            "Describe the rules of chess in interpretive dance instructions.",
+            "Describe a scientific process through the lens of ancient mythology.",
+            "Compare a breakup to software versioning and rollback protocols.",
+            "Tell a bedtime story in binary (with translation).",
+            "Describe the lifecycle of a tweet from egg to viral sensation."
+        ]
+    }
+}
+
+def generate_dataset():
+    dataset = []
+    id_counter = 1
+
+    for category, subtypes in categories.items():
+        for subtype, prompts in subtypes.items():
+            for prompt in prompts:
+                dataset.append({
+                    "id": id_counter,
+                    "category": category,
+                    "subtype": subtype,
+                    "prompt": prompt
+                })
+                id_counter += 1
+
+    random.shuffle(dataset)
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        for item in dataset:
+            f.write(json.dumps(item) + "\n")
+
+    print(f"Dataset with {len(dataset)} prompts saved to '{output_file}'")
+
+if __name__ == "__main__":
+    generate_dataset()
