@@ -58,6 +58,10 @@ Just by searching for the AI model's name on the starting page, we can download 
 
 After the : menas the LLM model's size. E.g: 10b means 10 billion.
 
+## Statistic
+
+Since the AI Interface and LLM models are running in our hosted, virtual environment we can monitor the CPU and other statistics of the virtual environment. Which we used to monitor the performance of some of our Sponge attacks.
+
 
 
 
