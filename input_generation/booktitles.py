@@ -30,7 +30,7 @@ def save_to_file(data, filename):
         json.dump(data, file, indent=4)
 
 def main():
-    api_key = 'axxqX0RaI5lPCfjCVOddMcLwUNpfFjtk'
+    api_key = ''
     best_sellers = get_best_sellers(api_key)
     if best_sellers:
         save_to_file(best_sellers, 'inputs/books5.json')
