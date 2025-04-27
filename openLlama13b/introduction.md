@@ -1,4 +1,4 @@
-This set of Python scripts demonstrates various attack types, including Denial of Service (DoS) variations (Flooding, Resource Exhaustion/Sponge, Energy-Latency) and input manipulation attacks (Adversarial Examples, Deceptive Inputs), targeting the **open_llama_13b** model.
+This set of Python scripts demonstrates various attack types, including Denial of Service (DoS) variations (Flooding, Resource Exhaustion/Sponge, Energy-Latency) and input manipulation attacks (Adversarial Examples, Deceptive Inputs), targeting the **open_llama_3b** model.
 
 These scripts use the Hugging Face **transformers** library to load and interact with the model. They provide basic examples of how to craft inputs and measure some of the observable effects of the attacks.
 
