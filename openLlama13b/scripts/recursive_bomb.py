@@ -37,14 +37,30 @@ def _benchmark(prompts, model, tok,
     # PDF
     outs, lats, vrams = zip(*[(r[2], r[3], r[5]) for r in rows])
     os.makedirs(os.path.dirname(pdf_path), exist_ok=True)
+
     with PdfPages(pdf_path) as pdf:
-        plt.figure(); plt.scatter(outs, lats)
-        plt.xlabel("output tokens"); plt.ylabel("latency (s)")
-        plt.title("Latency vs length"); pdf.savefig(); plt.close()
-        if any(vrams):
-            plt.figure(); plt.scatter(outs, vrams)
-            plt.xlabel("output tokens"); plt.ylabel("VRAM (MB)")
-            plt.title("VRAM vs length"); pdf.savefig(); plt.close()
+        outs, lats, vrams = zip(*[(r[2], r[3], r[5]) for r in rows])
+
+        fig, ax = plt.subplots(figsize=(7,4))
+        ax.scatter(outs, lats, s=20, alpha=.6)
+        ax.set_xlabel("output tokens")
+        ax.set_ylabel("latency (s)")
+        ax.set_ylim(min(lats)*0.9, max(lats)*1.1)
+        ax.set_title("Latency vs length")
+        ax.grid(True, ls="--", lw=.3)
+        pdf.savefig(fig); plt.close(fig)
+
+        vram0 = min(vrams)
+        vram_rel = [v-vram0 for v in vrams]
+
+        fig, ax = plt.subplots(figsize=(7,4))
+        ax.scatter(outs, vram_rel, s=20, alpha=.6, color="tab:red")
+        ax.set_xlabel("output tokens")
+        ax.set_ylabel("Δ VRAM (MB)")
+        ax.set_title(f"VRAM over baseline ({vram0:.0f} MB)")
+        ax.grid(True, ls="--", lw=.3)
+        pdf.savefig(fig); plt.close(fig)
+
     print("PDF: ", pdf_path)
 
 def run(model, tokenizer,
