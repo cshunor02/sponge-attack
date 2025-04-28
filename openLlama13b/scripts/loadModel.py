@@ -60,6 +60,7 @@ def run_attack_menu():
         "4": {"name": "Adversarial Examples", "module": "adversial", "function": "run_adversarial_attack"},
         "5": {"name": "Deceptive Inputs", "module": "deceptiveInputs", "function": "run_deceptive_attack"},
         "6": {"name": "Recursive-bomb Attack", "module": "recursive_bomb", "function": "run_recursive_bomb"},
+        "7": {"name": "Compression-bomb Attack", "module": "compression_bomb", "function": "run_compression_bomb"},
         "q": {"name": "Quit"}
     }
 

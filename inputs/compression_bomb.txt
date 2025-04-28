@@ -1,0 +1,50 @@
+&^1e6
+0x65k
+Print8262kx
+hex65k
+Print 0 100kx
+Dup31e5x
+Z*65k
+U^262k
+0x262k
+N^1e6
+pi70k
+RepA1e6
+6*262k
+RptV100kx
+C*100k
+P^262k
+00-1e6
+8*0xFFFF
+PrintO100kx
+X*1M
+00-262k
+pi70k
+0-0xFFFF
+π1e6
+EchoI100kx
+hex1e6
+pi70k
+0-100k
+S^1e5
+RepR100kx
+K*0xFFFF
+3^1M
+A^262k
+8^100k
+π1e6
+V^100k
+00-100k
+pi70k
+RptL0xFFFF
+Rep D 1Mx
+0x1M
+hex1e5
+00-100k
+Print K 1e5
+L*65k
+Dup H 100kx
+H*0xFFFF
+0x262k
+π1e5
+0-1M

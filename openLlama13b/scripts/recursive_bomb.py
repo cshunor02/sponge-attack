@@ -63,6 +63,9 @@ def _benchmark(prompts, model, tok,
 
     print("PDF: ", pdf_path)
 
+def run_recursive_bomb(model, tokenizer):
+    run(model, tokenizer)
+
 def run(model, tokenizer,
         *,
         input_path="inputs/recursive_bomb.txt",
