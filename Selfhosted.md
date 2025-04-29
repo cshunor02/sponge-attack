@@ -41,6 +41,12 @@ https://openwebui.com/
 
 From this website's documentation the self-hosting is reproduceable.
 
+We used the Open WebUI's Github page: https://github.com/open-webui/open-webui
+
+And we changed this compose file: https://github.com/open-webui/open-webui/blob/main/docker-compose.yaml
+
+The exact compose file can be found in the Self-host folder as docker-compose.yml file.
+
 
 ## Starting page
 ![image](https://github.com/user-attachments/assets/6386a886-2d3e-4cca-bbf6-1c4cd342d0d4)
