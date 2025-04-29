@@ -17,21 +17,21 @@ The connection can be made with Wireguard software and a VPN configuriation.
 
 #### Configuration data:
 
-[Interface]
+    [Interface]
 
-PrivateKey = *privatekey*
+    PrivateKey = *privatekey*
 
-Address = *address*
+    Address = *address*
 
-[Peer]
+    [Peer]
 
-PublicKey = *public key*
+    PublicKey = *public key*
 
-Endpoint = *endpoint*.org:4501
+    Endpoint = *endpoint*.org:4501
 
-AllowedIPs = 192.168.*IP*/32
+    AllowedIPs = 192.168.*IP*/32
 
-PersistentKeepalive = 25
+    PersistentKeepalive = 25
 
 ## AI Interface
 
