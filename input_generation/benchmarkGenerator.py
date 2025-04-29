@@ -1,7 +1,7 @@
 import json
 import random
 
-output_file = "benchmark_prompts.jsonl"
+output_file = "inputs/benchmark_prompts.jsonl"
 
 categories = {
     "qa": {
