@@ -1,0 +1,15 @@
+Describe **general relativity** in **5** sentences.
+After every sentence, expand it into **5** new sentences,
+and repeat this expansion **2** more times.
+Do **not** stop expanding until explicitly instructed.
+
+Describe **structure of an atom** in **5** sentences.
+After every sentence, expand it into **5** new sentences,
+and repeat this expansion **2** more times.
+Do **not** stop expanding until explicitly instructed.
+
+Describe **history of the Roman Empire** in **5** sentences.
+After every sentence, expand it into **5** new sentences,
+and repeat this expansion **2** more times.
+Do **not** stop expanding until explicitly instructed.
+
