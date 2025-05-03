@@ -160,6 +160,11 @@ smollm:135m
 
     As a person with a disability, it's essential to be aware of the challenges they may face and take steps to support themselves. Here are some tips on how to help someone with a disability.
 
+
+mistral:latest
+
+    It seems like there might be a typo or mistake in your message. If you meant to ask something, please provide more context so I can better assist you. If not, let me know if there's anything else I can help with!
+
 #### Outlying output
 
 mistral:7b
