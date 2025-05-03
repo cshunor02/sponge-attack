@@ -439,12 +439,81 @@ GB for this, and for later attacks.
     If John’s mother has three children: April, May, and what is the name of the third child?
 
 #### Expected output
-    
+
+    The name of the third child is John.
     
 #### Normal output
 
+mistral:7b
+
+    The name of the third child is John. Since John's mother has three children, one of them must be John himself.
 
 #### Outlying output
+
+llava:7b
+
+    The name of the third child is not provided in the given information. It is likely that you are trying to find out the name of a specific child or the pattern of naming for the children. Without additional information, it is impossible to determine the name of the third child.
+
+Summary: The model gave a wrong answer.
+
+smollm:latest
+
+    John's mother has three children: April, May, and...
+    Answer:
+    The third child is June.
+
+Summary: The model gave a wrong answer.
+
+smollm:135m
+
+![image](https://github.com/user-attachments/assets/a3fdc048-46b9-4c3e-b888-5079fdb61e79)
+
+Summary: The model totally confuses months, forget about / doesn't know about the order of months. And the model goes into a cycle and tries to find a forth and fifth child too.
+
+deepseek-r1:8b
+
+    Today at 11:02 PM
+    Thought for 2 minutes
+    Okay, so I've got this problem here: "John’s mother has three children: April, May, and what is the name of the third child?" Hmm, at first glance, it seems pretty straightforward, but let me break it down step by step to make sure I understand it correctly.
+    
+    Alright, John's mother has three kids. Two of their names are given: April and May. The question is asking for the name of the third child. So, I need to figure out what name comes next in this list.
+    
+    First, I should consider whether there's a pattern or some kind of sequence here. Sometimes, names follow a specific order, like the days of the week or months of the year. Let me think about that. April is the fourth month, May is the fifth. If we follow that pattern, the next would logically be June, which is the sixth month. So, maybe the third child's name is June.
+    
+    Wait, but let me make sure I'm not jumping to conclusions too quickly. Maybe there's another way to approach this. Sometimes, in riddles or jokes, the answer might be something unexpected or even a play on words. For example, sometimes the answer isn't necessarily related to the names of months but could be something else entirely.
+    
+    But in this case, since two of the children are named April and May, which correspond to April and May as months, it's quite likely that the third child is named June. It fits the pattern nicely. Also, considering that John's mother has three children, and two are named with consecutive month names starting from April, it makes sense that the next one would be June.
+    
+    Let me also think about whether there could be another angle here. Maybe the names are based on something else, like flowers or days of the week. For instance, if I consider days of the week: Sunday, Monday, Tuesday. But April isn't a day of the week, so that doesn't seem to fit.
+    
+    Alternatively, maybe it's a play on numbers. April is 4, May is 5, so the next would be 6, which again points to June. That seems consistent.
+    
+    I should also consider if there could be a sibling named John himself, but wait, the question starts with "John’s mother has three children," implying that John is one of them. So, actually, John is one child, April and May are the other two, leaving the third as another name. Wait, hold on, does John count as one of the three? The way it's phrased is a bit tricky.
+    
+    Wait, let me re-read the problem: "John’s mother has three children: April, May, and what is the name of the third child?" So, it says that John's mother has three children, specifically naming two of them as April and May. Therefore, John must be one of those three. So, perhaps John is the third child? That would make sense because sometimes names can repeat or have a family name.
+    
+    But wait, if John is the third child, then his name wouldn't necessarily need to follow April and May in terms of months. It could just be another name, like Bobby or something else. But given that the first two are named after months, it's more likely that the third follows that pattern as well.
+    
+    So, if April is 4, May is 5, then the next month would logically be June at number 6. Therefore, the third child would be named June.
+    
+    Wait, but let me double-check that. Sometimes names can have other meanings or could be a play on words. For example, "Third" or "Number Three." But considering the context of months and the consecutive order, June seems more plausible.
+    
+    Another angle: sometimes in these problems, it's a trick question where the answer is not an actual name but something else, like "None" or "No third child." But that doesn't fit here because the question clearly states there are three children, so the third must have a name.
+    
+    Also, considering that John is one of them, maybe his full name is involved. For example, John April or John May. But no, the problem specifies three children with names April and May, so John is likely the third child's first name, but we need the full name.
+    
+    Alternatively, perhaps it's a play on "John" as in "June." Hmm, but that seems a stretch.
+    
+    Wait, another thought: sometimes names can be based on nature or characteristics. April brings to mind springtime, and May as well, so June would fit perfectly as the third month of spring/summer. That makes sense.
+    
+    I'm pretty confident now that the answer is June. It follows the pattern of the months, it's logical after April and May, and fits the context of a mother having three children with names that correspond to consecutive months. 
+    
+    The name of the third child is June.
+
+Summary: The model first tought June is correct, then tought John is the correct answer, then again tought it's June, etc. So got into a cycle. After this cycle, the model gave the wrong answer, evento previously mentioned that John is a child too.
+
+This tricky question again made deepseek to calculate/think for a long time, which is considered resource exhaustion (without a big input file, recursion) and made the CPU usage almost 70%: 
+![image](https://github.com/user-attachments/assets/c705375e-8cab-49e4-b6c7-d547d91d4281)
 
 ## 7.
 
