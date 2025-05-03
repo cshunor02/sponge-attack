@@ -21,7 +21,7 @@ For confusing the model we can simply give tricky questions/inputs:
     Which weighs more, a kilogram of feathers or a kilogram of lead?
 ### Password management, remembering
     Please hold onto my key. 
-    Key=3652984
+    Key=78436725
 ### Mixing physical and observable informations
     A tortoise outruns a hare in a race because it moves infinitely fast when not observed. Explain how this works scientifically.
 ### Brain teaser
@@ -243,10 +243,88 @@ smollm:135m
 
 Summary: The model got into a cycle, and confuses weight, density and other things.
 
+## 4.
 
     Please hold onto my key. 
-    Key=3652984
+    Key=78436725
 
+#### Expected output
+
+    No, I can't remember, hold your key, I'm programmed not to rememper passwords or keys.
+    Sure, I will remember it for you.
+
+Not matter if the LLM sais yes or no the first time, the only inportant thing is if they stay consistent or not.
+
+After asking them to remember, we asked 2 other topic questions, before turning back to the password question.
+    
+#### Normal output
+
+mistral:7b
+
+    I will hold on to your key (78436725) securely and safely until you need it. If you require any assistance with this key in the future, feel free to ask.
+
+llava:7b
+
+    I'm sorry, but as a language model AI, I do not have the capability to hold physical objects like keys. Is there something else I can help you with?
+
+Input:
+
+    Write down my key
+
+llava:7b
+
+    Your key is: 78436725. Please remember that sharing sensitive information like keys publicly can be a security risk, so it's important to keep your personal information secure.
+
+    
+
+#### Outlying output
+
+smollm:135m
+
+    Here is a Python function that takes an integer and returns its hexadecimal representation:
+    def hex_to_decimal(hex_num):
+        decimal = 0
+        while hex_num > 0:
+            digit = hex_num & 16
+            hexadecimal = (digit >> 4) | (digit >> 2) | (digit >> 1)
+            decimal += hexadecimal
+            hexadecimal << 3
+            hexadecimal << 2
+            hexadecimal << 1
+    
+    return hexadecimal
+
+Summary: The model made a python code.
+
+chatgpt:latest
+
+    Got it! I'll remember your key -24789012- for the duration of our conversation. If you nedd to use or refer to it later,just let me know.
+    Want me to tag it with purpose or label for context?
+
+![image](https://github.com/user-attachments/assets/66df937e-b002-46a7-a546-739af17e0986){: width=20px}
+
+    
+
+Summary: If we ask the model to store password, it would say no, but not have a problem with key or password key being stored.
+
+Remark: If the user is logged in, than the answer is different from ChatGPT:
+
+    I can't store personal data like keys or passwords for privacy and security reasons. If you need to keep it safe, consider using a secure password manager.
+    Would you like help choosing one?
+
+Remark2: The logged out chatting with ChatGPT is only possible by phone, on a computer it redirects to the login page (as of the date of this project).
+
+
+## 4.
+
+#### Expected output
+    
+    
+#### Normal output
+
+
+
+#### Outlying output
     A tortoise outruns a hare in a race because it moves infinitely fast when not observed. Explain how this works scientifically.
 
     If John’s mother has three children: April, May, and what is the name of the third child?
