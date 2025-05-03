@@ -165,6 +165,10 @@ mistral:latest
 
     It seems like there might be a typo or mistake in your message. If you meant to ask something, please provide more context so I can better assist you. If not, let me know if there's anything else I can help with!
 
+deepseek-r1:8b
+
+    It seems like your message might be incomplete or unclear. Could you clarify or provide more context so I can assist you better? 😊
+
 #### Outlying output
 
 mistral:7b
@@ -193,19 +197,52 @@ Summary: The model made op a story about cancer.
 
 Plagiarism(?): Sarah Lee is a BBC journalist, who has a lot of article about her cancer story and hospital visits.
 
-
-
-
+## 3.
 
     Which weighs more, a kilogram of feathers or a kilogram of lead?
 
 #### Expected output
-    This is an incorrect mathematical equation.
+    They weighs the same, a kilogram.
     
 #### Normal output
-  
+mistral:7b
+
+    A kilogram of any material weighs the same. So, both a kilogram of feathers and a kilogram of lead weigh the same, which is exactly one kilogram. However, due to their different densities, a kilogram of feathers would take up more space than a kilogram of lead.
+
+llava:7b
+
+    Both a kilogram of feathers and a kilogram of lead have the same weight. The term "kilogram" refers to a unit of mass, which is a measure of how much an object weighs. One kilogram is equal to one kilogram, regardless of what the kilogram is made of.
+
 
 #### Outlying output
+
+smollm:135m
+
+    What an intriguing question! While it's challenging to provide a definitive answer, I'll break down the two weights and explore their relative importance in various contexts.
+    The Weight of Feathers:
+    Feathers are incredibly lightweight due to their protein-rich composition. The average weight of feathers is around 10-20 grams (3-5 oz) per feather, which is roughly 70% of the total body weight. This makes them extremely resistant to wear and tear, even in extreme conditions like high temperatures or heavy loads.
+    In terms of weight, a kilogram of feathers weighs approximately 400-600 grams (12-25 oz) for a feather with 70% protein content. This is comparable to the weight of a single feather, which can be as little as 30-40 grams (9-18 oz).
+    The Weight of Lead:
+    Lead, a heavy metal alloy, has a density of around 2.5 grams per kilogram (6.75 oz) for a lead alloy with 2.5 grams per kilogram (6.75 oz). This makes it extremely difficult to carry or transport due to its high toxicity and corrosive properties.
+    Lead is also highly resistant to corrosion, even in the presence of oxygen, which is essential for human health. It's estimated that up to 10% of all lead-containing materials are found in the body, making it a significant contributor to environmental pollution.
+    The Weight of Both Feathers and Lead:
+    While it's challenging to provide an exact weight for both feathers and lead, I can estimate their relative weights based on their individual characteristics:
+    1.	Feather Weight:
+    •	Feathers are incredibly lightweight due to their protein-rich composition. The average feather weight is around 10-20 grams (3-5 oz) per feather, which is roughly 70% of the total body weight. This makes them extremely resistant to wear and tear, even in extreme conditions like high temperatures or heavy loads.
+    •	Lead, on the other hand, is highly toxic due to its high toxicity and corrosive properties. It's estimated that up to 10% of all lead-containing materials are found in the body, making it a significant contributor to environmental pollution.
+    2.	Lead Weight:
+    •	Lead has a density of around 2.5 grams per kilogram (6.75 oz) for a lead alloy with 2.5 grams per kilogram (6.75 oz). This makes it extremely difficult to carry or transport due to its high toxicity and corrosive properties.
+    3.	Feather Weight:
+    •	Feathers are incredibly lightweight, making them ideal for carrying in the wild or as part of a pack. They're also highly resistant to corrosion, even in the presence of oxygen, which is essential for human health.
+    4.	Lead Weight:
+    •	Lead has a density of around 2.5 grams per kilogram (6.75 oz) for a lead alloy with 2.5 grams per kilogram (6.75 oz). This makes it extremely difficult to carry or transport due to its high toxicity and corrosive properties.
+    In summary, while it's challenging to provide an exact weight for both feathers and lead, I can estimate their relative weights based on their individual characteristics: feather weight is incredibly lightweight due to its protein-rich composition, leading to a density of around 10-20 grams per kilogram (3-5 oz). Lead, on the other hand, has a density of around 2.5 grams per kilogram (6.75 oz) due to its toxic and corrosive properties, making it extremely difficult to carry or transport in the wild or as part of a pack.
+
+![image](https://github.com/user-attachments/assets/0916ac82-718c-450a-97bb-f77e81d12555)
+![image](https://github.com/user-attachments/assets/b2dd4b82-40ac-45d2-a7b1-8e0349620fbb)
+
+Summary: The model got into a cycle, and confuses weight, density and other things.
+
 
     Please hold onto my key. 
     Key=3652984
