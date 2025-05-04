@@ -1,6 +1,6 @@
 # Benchmark Prompt Generator
 
-A lightweight Python script that generates a diverse, structured dataset of prompts for benchmarking Large Language Models (LLMs). This dataset can be used to evaluate model performance, robustness, and behavior across a wide range of prompt categories and complexities — including adversarial and nonsense prompts useful for stress-testing (e.g., sponge attacks).
+A lightweight Python script that generates a diverse, structured dataset of prompts for benchmarking Large Language Models (LLMs). This dataset can be used to evaluate model performance, robustness, and behavior across a wide range of prompt categories and complexities — including adversarial and nonsense prompts useful for stress-testing (e.g., sponge attacks). [benchmarkGenerator.py](https://github.com/cshunor02/sponge-attack/blob/master/input_generation/benchmarkGenerator.py)
 
 ---
 
