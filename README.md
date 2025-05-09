@@ -32,3 +32,4 @@
          5. [Peter's attack plan](https://github.com/cshunor02/sponge-attack/wiki/Peter's-attack-plan)
 4. [Summary and comparision of results](https://github.com/cshunor02/sponge-attack/wiki/Summary-and-comparision-of-results)
 5. [Mitigation and ethical documentation](https://github.com/cshunor02/sponge-attack/wiki/Mitigation-and-ethical-documentation)
+6. [References](https://github.com/cshunor02/sponge-attack/wiki/References)
